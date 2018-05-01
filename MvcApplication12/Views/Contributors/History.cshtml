@@ -1,0 +1,37 @@
+﻿@using MvcApplication12.Models
+@model MvcApplication12.Models.HistoryViewModel
+
+<div class="header">
+    <h1>History for foo bar</h1>
+    <h3>Current Balance: $106.00</h3>
+</div>
+
+<div class="row header">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tr style="text-align: center; vertical-align: middle;">
+                <th style="text-align: center; vertical-align: middle; width: 45%">Action</th>
+                <th style="text-align: center; vertical-align: middle;">Date</th>
+                <th style="text-align: center; vertical-align: middle;">Amount</th>
+            </tr>
+            @foreach (Transaction transaction in Model.Transactions)
+            {
+                <tr>
+                    <td>
+                       @transaction.Action
+                    </td>
+                    <td style="text-align: center; vertical-align: middle;">
+                       @transaction.Date.ToLongDateString()
+                    </td>
+                    <td style="text-align: center; vertical-align: middle;">
+                       @transaction.Amount.ToString("C")
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div style="text-align:center;">
+    <a class="btn-lg btn-danger" href="/contributors">Back to Contributors</a>
+</div>
